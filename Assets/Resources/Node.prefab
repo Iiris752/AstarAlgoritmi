@@ -127,3 +127,13 @@ MonoBehaviour:
   unwalkableNodeColour: {fileID: 2100000, guid: d7871f50ca220d149a348cd3d5aae60f, type: 2}
   endpointNodeColour: {fileID: 2100000, guid: 8ab395da152b6d744ad07a5950518b20, type: 2}
   startpointNodeColour: {fileID: 2100000, guid: 675bb780fe875474998264d56cf59382, type: 2}
+  neighborNodes: []
+  nodeColours:
+  - {fileID: 2100000, guid: 3bcc6a208a9139b42adf26d3082dd75f, type: 2}
+  - {fileID: 2100000, guid: bd9e969073348fb4c988ec8fe8fe4a64, type: 2}
+  - {fileID: 2100000, guid: 8ab395da152b6d744ad07a5950518b20, type: 2}
+  - {fileID: 2100000, guid: ec1725135c500e0469873964eaff69a0, type: 2}
+  - {fileID: 2100000, guid: 3512313b894387d488498891e760d25f, type: 2}
+  - {fileID: 2100000, guid: 6695bf843b4672b47bfe3ffbf0d51ca8, type: 2}
+  - {fileID: 2100000, guid: 675bb780fe875474998264d56cf59382, type: 2}
+  - {fileID: 2100000, guid: d7871f50ca220d149a348cd3d5aae60f, type: 2}

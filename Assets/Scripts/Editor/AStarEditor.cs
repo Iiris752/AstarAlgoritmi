@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using Mono.Cecil;
+using System.Runtime.InteropServices.ComTypes;
+using NUnit.Framework;
 
 public class AStarEditor : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class AStarEditor : MonoBehaviour
 
     //poistaminen:
     [MenuItem("AStar/Delete Grid")]
-    static async void DeleteGrid()
+    static void DeleteGrid()
         {
         GameObject[] allNodes = GameObject.FindGameObjectsWithTag("AStarNode");
 
@@ -67,7 +69,43 @@ public class AStarEditor : MonoBehaviour
                 nodescript.SetColourEndpoint();
             }
         }
-
     }
+
+    [MenuItem("AStar/Search Neighbors")]
+    static void SearchNeighbors()
+    {
+        GameObject[] allNodes = GameObject.FindGameObjectsWithTag("AStarNode");
+
+        for (int i = 0; i < allNodes.Length; i++)
+        {
+            GameObject thisNode = allNodes[i];
+            AstrNode nodescript = thisNode.GetComponent<AstrNode>();
+
+            nodescript.neighborNodes.Clear();
+
+            for (int j = 0; j < allNodes.Length; j++)
+                {
+                GameObject potentialNeighbor = allNodes[j];
+                AstrNode neighborScript = potentialNeighbor.GetComponent<AstrNode>();
+
+                //varmistetaan ettei liätä itseään naapureihin
+                if (thisNode == potentialNeighbor) continue;
+
+                //tarkistetaan nodejen välinen etäisyys:
+                float distance = Vector3.Distance(thisNode.transform.position,
+                    potentialNeighbor.transform.position);
+
+                //jos etäisyys on pienempi kuin 1.8, niin silloin kyseessä on naapuri
+                if (distance < 1.8f)
+                    {
+                    //lisätään naapuri listaan
+                    nodescript.neighborNodes.Add(neighborScript);
+                    Debug.Log(thisNode.name + " Naapuri lisätty: " + potentialNeighbor.name);
+                    }
+                }
+
+        }
+    }
+
 }
 
