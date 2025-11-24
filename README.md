@@ -14,3 +14,5 @@ Käytetyt teknologiat ja työkalut:
 
 - Unity
 - C#
+
+Pari screenshot-kuvaa Unityprojektista löytyy screenshotit kansiosta
