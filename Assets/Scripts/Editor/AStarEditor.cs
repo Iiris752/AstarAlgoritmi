@@ -53,20 +53,20 @@ public class AStarEditor : MonoBehaviour
             if (Physics.Raycast(checkBarrierNode.transform.position, Vector3.up, out rh ))
             {
                 Debug.Log("Osuttiin: " + rh.collider.name);
-
-                nodescript.SetColourUnwalkable();
+                nodescript.isNotWalkable = true; 
+                nodescript.SetColour(NodeType.unwalkableNodeColour);
             }
 
             if (nodescript.startpoint == true)
             {
                 Debug.Log("Alkupiste löydetty");
-                nodescript.SetColourStartpoint();
+                nodescript.SetColour(NodeType.startpoint);
             }
 
             if (nodescript.endpoint == true)
             {
                 Debug.Log("Loppupiste löydetty");
-                nodescript.SetColourEndpoint();
+                nodescript.SetColour(NodeType.endpoint);
             }
         }
     }

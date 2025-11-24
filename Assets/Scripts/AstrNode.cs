@@ -3,12 +3,24 @@ using System.Data.Common;
 using UnityEngine;
 using System.Collections.Generic;
 
+//merkitään muistiin ja esitellään kaikki node colourit:
+public enum NodeType
+{
+    BarrierMaterial = 0,
+    ClosedListNode,
+    endpoint,
+    NodeMaterial,
+    OpenListNode,
+    PathNode,
+    startpoint,
+    unwalkableNodeColour
+}
+
 public class AstrNode : MonoBehaviour
 {
     public bool startpoint = false;
     public bool endpoint = false;
     public bool isNotWalkable = false;
-    public Material unwalkableNodeColour;
 
     //Astarissa vaaditut arvot
     //f = g + h
@@ -16,32 +28,16 @@ public class AstrNode : MonoBehaviour
     public float g = 0; //Astarissa vaadittu g-arvo 
     public float h = 0; //Astarissa vaadittu h-arvo
 
-    public Material endpointNodeColour;
-    public Material startpointNodeColour;
+    public AstrNode parent;
 
     public List<AstrNode> neighborNodes = new List<AstrNode>();
 
     public Material[] nodeColours;
 
-    public void SetColourUnwalkable()
+    public void SetColour(NodeType colourIndex)
     {
-        isNotWalkable = true;
         MeshRenderer mr = GetComponent<MeshRenderer>();
-        mr.sharedMaterial = unwalkableNodeColour;
-    }
-
-    public void SetColourStartpoint()
-    {
-        isNotWalkable = true;
-        MeshRenderer mr = GetComponent<MeshRenderer>();
-        mr.sharedMaterial = startpointNodeColour;
-    }
-
-    public void SetColourEndpoint()
-    {
-        isNotWalkable = true;
-        MeshRenderer mr = GetComponent<MeshRenderer>();
-        mr.sharedMaterial = endpointNodeColour;
+        mr.material = nodeColours[(int)colourIndex];
     }
 
 }
